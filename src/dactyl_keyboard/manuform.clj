@@ -1627,10 +1627,7 @@
                              (translate [0 0 -2] (screw-insert-screw-holes screw-placement c))
                              ())
         bot                (cut (translate [0 0 -0.1] (union (case-walls c) screw-outers)))
-        inner-thing        (difference (translate [0 0 -0.1] (project (union (extrude-linear {:height 5
-                                                                                              :scale  0.1
-                                                                                              :center true} bot)
-                                                                             (cube 50 50 5))))
+        inner-thing        (difference (translate [0 0 -0.1] (project (extrude-linear {:height 5 :scale 0 :center true} bot)))
                                        screw-inners)]
     (difference (extrude-linear {:height 3} inner-thing)
                 screw-inners)))
